@@ -1,0 +1,26 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'trips' %>
+  <%= stylesheet_link_tag 'cars' %>
+<% end %>
+<% content_for :title, "Tu Auto - #{@car.name} #{@car.model}" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" id="trips-pages">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="col-lg-4">
+        <%= render partial: "dashboards/columns/column-left" %>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <%= render partial: "shared/flash_messages", flash: flash %>
+        <div class="well" id="show-cars">
+          <h2><b>Mi  <%= @car.car_with_model %></b></h2>
+          <p>Nombre: <%= @car.name %></p>
+          <p>Modelo: <%= @car.model %></p>
+          <p>Asientos disponibles: <%= @car.places %></p>
+          <p>Año de matriculacion: <%= @car.year %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <%= render partial: "shared/flash_messages", flash: flash %>
+  <div class="well" id="trip-wall">
+    <% if current_user == @trip.owner  || current_user.subscribing?(@trip) %>
+      <%= form_for @post, url: '#' do |f| %>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <%= image_tag(current_user.facebook_image_url, size: "40x40", class: " photo-profile") %>
+            </a>
+          </div>
+          <div class="media-body">
+            <a href="#" class="anchor-username"><h4 class="media-heading"><%= current_user.name %></h4></a>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= f.text_area :content, class: "form-control", id: "textarea-trip", placeholder: "¿Qué estas pensando?" %>
+        </div>
+        <%= f.submit "Publicar", class: "btn btn-primary pull-right" %>
+        <ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+      <% end %>
+    <% else %>
+      <div id="subscribe-trip" class="text-center">
+        <h2>Por favor suscribase al evento para poder participal</h2>
+        <% if current_user != @trip.owner %>
+          <%= render partial: 'trips/relationship/subscribe', locals: { trip_id: @trip.id} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="posts" data-trip-room-id="<%= @trip.id %>">
+    <%= render @trip.posts %>
+  </div>
+
+</div>

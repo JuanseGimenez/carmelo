@@ -1,0 +1,100 @@
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="carmelo-col-3">
+  <div>
+    <h4>Información del evento</h4>
+    <hr>
+    <% if current_user != @trip.owner %>
+      <div id="subscribe_form" class="text-center">
+        <% if current_user.subscribing?(@trip)%>
+          <%= render partial: 'trips/relationship/unsubscribe', locals: { trip_id: @trip.id } %>
+        <% end %>
+      </div>
+    <% else %>
+      <%= link_to "nuevo segmento con auto", new_trip_car_segment_path(@trip)%><br>
+      <%= link_to "nuevo segmento estadia", new_trip_hotel_segment_path(@trip) %><br>
+      <%= link_to "nuevo segmento evento", new_trip_event_segment_path(@trip) %><br>
+    <% end %>
+  </div>
+  <div class="main" id="timeline-trip">
+    <ul class="timeline">
+      <li><div class="tldate"><%= I18n.localize @trip.start_date, :format => :short_custom %></div></li>
+      <li>
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>Inicio de evento</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= I18n.localize @trip.start_date, :format => :hours %></small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>Breaking into Spring!</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 13:20</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li><div class="tldate">Mar 2014</div></li>
+      <li>
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>New Apple Device Release Date</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 15:25</small></p>
+          </div>
+          <div class="tl-body">
+
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>No icon here</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 17:30</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>Some Important Date!</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 19:35</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="timeline-panel noarrow">
+          <div class="tl-heading">
+            <h4>Secondary Timeline Box</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:40</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li><div class="tldate"><%= I18n.localize @trip.end_date, :format => :short_custom %></div></li>
+      <li class="timeline-inverted">
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h4>Fin del evento</h4>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= I18n.localize @trip.end_date, :format => :hours %></small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

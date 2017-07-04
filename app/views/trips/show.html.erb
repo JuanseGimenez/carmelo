@@ -1,0 +1,15 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'trips' %>
+<% end %>
+<% content_for :title, "Trip numero #{@trip.id}" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" id="trips-pages">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= render partial: "trips/show/column-left" %>
+      <%= render partial: "trips/show/column-center"%>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer" %>

@@ -1,0 +1,36 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'trips' %>
+  <%= stylesheet_link_tag 'cars' %>
+<% end %>
+<% content_for :title, "Tus Autos" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" id="trips-pages">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= render partial: "shared/flash_messages", flash: flash %>
+      <div class="col-lg-4">
+        <%= render partial: "dashboards/columns/column-left" %>
+      </div>
+      <div class="col-lg-8">
+      <div class="well" id="index-cars">
+        <h2><b>Mis autos</b></h2>
+        <div class="row">
+          <% @cars.each do |car| %>
+            <div class="col-sm-3">
+              <div class="card">
+                <img class="card-img-top" src="data:image/png;base64,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" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title"><%= car.name %> <%= car.model %></h4>
+                  <p class="card-text">Asientos disponibles: <%= car.places %></p>
+                  <%= link_to "Ver", car_path(car) , class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

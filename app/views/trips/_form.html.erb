@@ -1,0 +1,29 @@
+<%= render partial: "shared/flash_messages", flash: flash %>
+<div class="col-lg-12" id="trip-form">
+  <h2><%= yield(:title_form) %></h2>
+  <%= bootstrap_form_for @trip do |f| %>
+    <%= f.text_field :name, class: "form-control input-lg", required: true, placeholder: "Nombre del evento", label: "Nombre" %>
+    <%= f.text_field :start_date, class: 'form-control input-lg', data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, label: "Fecha de Inicio de Evento" %>
+    <%= f.text_field :end_date, class: 'form-control input-lg', data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, label: "Fecha de Fin de Evento" %>
+    <%= f.submit "Guardar", class: "btn btn-info btn-lg col-lg-12" %>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+      $('#trip_start_date').datetimepicker({
+      });
+  });
+
+  $('#trip_start_date input').click(function(event){
+     $('#trip_start_date ').data("DateTimePicker").show();
+  });
+  $(function () {
+      $('#trip_end_date').datetimepicker({
+      });
+  });
+
+  $('#trip_end_date input').click(function(event){
+     $('#trip_end_date ').data("DateTimePicker").show();
+  });
+</script>

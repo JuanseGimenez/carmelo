@@ -1,0 +1,31 @@
+<%= render partial: "shared/flash_messages", flash: flash %>
+<div class="well" id="form-cars">
+  <div class="row centered-form">
+    <div class="col-xs-10 col-sm-10 col-lg-8 col-lg-offset-2">
+      <h2><b>Registre su auto</b></h2>
+      <%= bootstrap_form_for @car do |f| %>
+        <%= f.text_field :name, class: "form-control input-lg", placeholder: "Peugeot" , label: "Nombre" %>
+        <%= f.text_field :model, class: "form-control input-lg", placeholder: "206" , label: "Modelo" %>
+        <%= f.number_field :year, class: "form-control input-lg", placeholder: "YYYY" , label: "Año de matriculacion" %>
+        <%= f.number_field :places, class: "form-control input-lg", placeholder: "3" , label: "Asientos" %>
+        <%= f.submit "Guardar" , class: "btn btn-lg btn-info btn-block col-lg-12"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $(function () {
+      $('#car_year').datetimepicker({
+        viewMode: 'years',
+        format: 'YYYY'
+      });
+  });
+
+  $('#car_year input').click(function(event){
+     $('#car_year ').data("DateTimePicker").show();
+  });
+</script>
+
+

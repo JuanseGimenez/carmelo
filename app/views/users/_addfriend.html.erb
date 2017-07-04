@@ -1,0 +1,4 @@
+<%= form_for(current_user.friendships.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :user_id, @user.id %></div>
+  <%= f.submit "Agregar", class: "btn btn-success text-uppercase" %>
+<% end %>

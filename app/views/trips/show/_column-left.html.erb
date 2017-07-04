@@ -1,0 +1,146 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <h3>Titulo de viaje </h3>
+    </div>
+
+    <div class="panel-body" id="body-info">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div><!-- /panel-body -->
+
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-lg-6">
+          <h4 class="text-muted">Participantes</h4>
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://cdn.amp.it/0.62.1/static/img/defaultProfilePicture.png" class="img-resposive img-rounded trip-followers" width="40">
+          <img src="http://www.rafacademy.com/wp-content/uploads/2017/03/user-default.png" class="img-resposive img-rounded trip-followers" width="40">
+        </div>
+        <div class="col-lg-6">
+          <h4 class="text-muted">Administrar</h4>
+          <p><button type="button" class="btn btn-danger">Cancelar Viaje</button> <button type="button" class="btn btn-info">Editar Viaje</button></p>
+        </div>
+      </div>
+    </div><!-- /panel-body -->
+  </div><!-- /panel panel-default -->
+
+  </div><!-- /col-sm-5 -->
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="carmelo-col-3">
+  <div>
+    <div id="btn-trip">
+      <% if current_user != @trip.owner %>
+        <div id="subscribe_form">
+        <% if current_user.subscribing?(@trip) %>
+          <%= render partial: 'trips/relationship/unsubscribe', locals: { trip_id: @trip.id } %>
+        <% else %>
+          <%= render partial: 'trips/relationship/subscribe', locals: { trip_id: @trip.id} %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="main" id="timeline-trip">
+    <ul class="timeline">
+      <li><div class="tldate">Apr 2014</div></li>
+      <li>
+        <div class="tl-circ"><i class="fa fa-plane" aria-hidden="true"></i></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>Avion</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 12:15</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="tl-circ"><i class="fa fa-car" aria-hidden="true"></i></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>Auto</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 13:20</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li><div class="tldate">Mar 2014</div></li>
+      <li>
+        <div class="tl-circ"><i class="fa fa-building" aria-hidden="true"></i></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>Hotel</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 15:25</small></p>
+          </div>
+          <div class="tl-body">
+
+          </div>
+        </div>
+      </li>
+      <li class="timeline-inverted">
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>No icon here</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 17:30</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="tl-circ"><i class="fa fa-ticket" aria-hidden="true"></i></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>Evento</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 19:35</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="timeline-panel noarrow">
+          <div class="tl-heading">
+            <h5>Secondary Timeline Box</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 22:40</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li><div class="tldate">Feb 2014</div></li>
+      <li class="timeline-inverted">
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>The Winter Months</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 23:45</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="tl-circ"><img src="http://lanyon.com/Images/Icon-Images/Lanyon_Mobile_icon_Core_Features.aspx" class="img-responsive" width="40px"></div>
+        <div class="timeline-panel">
+          <div class="tl-heading">
+            <h5>Yeah we're pretty much done here</h5>
+            <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 00:00</small></p>
+          </div>
+          <div class="tl-body">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

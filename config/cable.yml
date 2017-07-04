@@ -1,0 +1,9 @@
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: redis://:q1w2e3r4t5@redis-17475.c8.us-east-1-4.ec2.cloud.redislabs.com:17475

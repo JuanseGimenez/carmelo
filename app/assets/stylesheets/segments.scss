@@ -1,0 +1,70 @@
+// Place all the styles related to the Segments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#form-segment h2{
+  color: #50c0f4;
+  font-family: 'Roboto', sans-serif;
+}
+
+#form-segment {
+  background-color: #fff;
+}
+
+#form-segment .row {
+  padding: 15px;
+}
+
+.info-segment {
+  padding-top: 40px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.info-segment span {
+  font-weight: bold;
+  color: #50c0f4;
+}
+
+.info-segment #segment-name {
+  color: #009900;
+}
+
+@media(max-width:767px){
+  .info-segment h3  {
+    font-size: 15px;
+  }
+}
+@media(min-width:768px){
+  .info-segment h3  {
+    font-size: 20px;
+  }
+}
+@media(min-width:992px){
+  .info-segment h3  {
+    font-size: 25px;
+  }
+}
+
+#trips_car_title {
+  background-color: #5bc0de;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.trips_car {
+  padding-top: 50px;
+}
+
+.trips_car #origin {
+  color: green;
+}
+
+.trips_car #destination {
+  color: red;
+}
+
+.trips_car hr{
+  border-top: 1px solid #5bc0de;
+}

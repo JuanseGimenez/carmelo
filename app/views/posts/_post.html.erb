@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <section class="post-heading">
+      <div class="row">
+        <div class="col-md-11">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <%= image_tag(post.user.facebook_image_url, size: "40x40", class: "media-object photo-profile") %>
+              </a>
+            </div>
+            <div class="media-body">
+              <a href="#" class="anchor-username"><h4 class="media-heading"><%= post.user.name %></h4></a>
+              <a href="#" class="anchor-time"><%= I18n.localize post.created_at , :format => :short %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="post-body">
+      <p><%= post.content %></p>
+    </section>
+    <section class="post-footer">
+      <hr>
+        <div class="post-footer-comment-wrapper" id="comments">
+          <div class="comment-form">
+            <input type="text" name="example" class="form-control" placeholder="escribi tu comentario aquí...">
+          </div>
+        </div>
+    </section>
+  </div>
+</div>

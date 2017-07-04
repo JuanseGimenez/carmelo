@@ -1,0 +1,49 @@
+<div class="row">
+  <%= bootstrap_form_for([@trip, @trip.car_segments.build])  do |f| %>
+    <%= f.text_field :name, class: "input-lg", label: "Nombre del segmento" %>
+    <%= f.text_area :description, class: "input-lg", label: "Descripcion corta" %>
+    <%= f.text_field :origin, class: "input-lg", id: "origin" , label: "Origen" %>
+    <%= f.text_field :destination, class: "input-lg", id: "destination" , label: "Destino" %>
+    <%= f.text_field :start_date, data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, class: "input-lg", label: "Fecha de inicio" %>
+    <%= f.text_field :end_date , data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, class: "input-lg", label: "Fecha de finalizacion"%>
+    <%= collection_select(:segment, :car_id, @cars, :id, :car_with_model, {:prompt => 'Seleccione su auto'},{class: "form-control input-lg"} )%>
+    <br>
+    <%= f.submit "Guardar Segmento", class: "btn btn-lg btn-info btn-block col-lg-12"%>
+  <% end %>
+</div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Es7o2Gtlqi9Vi2JMXuae75q2jp5ecXk&libraries=places"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#car_segment_start_date').datetimepicker({
+      });
+  });
+
+  $('#scar_segment_start_dateinput').click(function(event){
+     $('#car_segment_start_date').data("DateTimePicker").show();
+  });
+  $(function () {
+      $('#car_segment_end_date').datetimepicker({
+      });
+  });
+
+  $('#car_segment_end_date input').click(function(event){
+     $('#car_segment_end_date ').data("DateTimePicker").show();
+  });
+
+  function initialize() {
+
+    var options = {
+        types: ['(cities)'],
+        componentRestrictions: {country: 'ar'}
+    };
+
+    var origin = document.getElementById('origin');
+    var autocomplete_origin = new google.maps.places.Autocomplete(origin, options);
+
+    var destination = document.getElementById('destination');
+    var autocomplete_destination = new google.maps.places.Autocomplete(destination, options);
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

@@ -1,0 +1,20 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'trips' %>
+  <%= stylesheet_link_tag 'segments' %>
+<% end %>
+<% content_for :title, "Editnado segmento evento" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" id="trips-pages">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= render partial: "trips/show/column-left" %>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div class="well" id="form-segment">
+          <h2>Editando segmento de tipo evento</h2>
+          <%= render partial: "form"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

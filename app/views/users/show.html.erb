@@ -1,0 +1,14 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'users' %>
+<% end %>
+<% content_for :title, "Usuario #{@user.name}" %>
+<%= render partial: "dashboards/header/navbar" %>}
+<div id="user-profile">
+  <%= render partial: "users/profile-head"%>
+  <% if @user == current_user %>
+    <%= render partial: "users/my_profile"%>
+  <% else %>
+    <%= render partial: "users/column-profile" %>
+  <% end %>
+</div>

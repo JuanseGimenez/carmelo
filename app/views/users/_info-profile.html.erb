@@ -1,0 +1,23 @@
+<div class="card hovercard">
+  <div class="cardheader">
+  </div>
+  <div class="avatar">
+    <image alt="Foto de perfil" src="<%= current_user.facebook_image_url%>?type=normal" ></image>
+  </div>
+  <div class="info">
+    <div class="title">
+      <%= link_to current_user.name, user_path(current_user)%>
+    </div>
+    <div class="desc">
+      <ul>
+        <% current_user.requested_friendships.each do |request| %>
+          <li>
+            <%= request.name %>
+            <%= link_to "Aceptar",  confirm_friend_friendships_path(id: request.id), method: "put"  %>
+            <%= link_to "Declinar", cancel_friend_friendships_path(id: request.id), method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

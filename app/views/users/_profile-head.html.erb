@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="fb-profile">
+    <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
+    <img align="left" class="fb-image-profile thumbnail" src="<%= @user.facebook_image_url%>?type=large" alt="Profile image example"/>
+    <div class="fb-profile-text">
+      <h1><%= link_to @user.name, "http://facebook.com/#{@user.uid}" %></h1>
+      <p>@<%= @user.location %></p>
+    </div>
+    <% if current_user != @user %>
+      <div id="friend_form">
+        <% if current_user.pending.include?(@user) %>
+          <%= render partial: "users/cancelfriend",  locals: { user: @user }%>
+        <% else %>
+          <%= render partial: "users/addfriend", locals: { user: @user } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div> <!-- /container -->

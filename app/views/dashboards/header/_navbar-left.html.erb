@@ -1,0 +1,7 @@
+<ul class="nav navbar-nav" id="carmelo-global-actions">
+  <li class="<%= 'active' if current_page?(home_path) %>"><a href="<%= root_path %>"><i class="fa fa-home hidden-xs hidden-sm" aria-hidden="true"></i> Inicio</a></li>
+  <li class=""><a href="#"><i class="fa fa-bolt hidden-xs hidden-sm" aria-hidden="true"></i> Mis Publicaciones <span class="sr-only">(current)</span></a></li>
+  <li class=""><a href="#"><i class="fa fa-bell hidden-xs hidden-sm" aria-hidden="true"></i> Notificaciones</a></li>
+  <li class="<%= 'active' if current_page?(search_trips_path) %>"><a href="<%= search_trips_path %>"><i class="fa fa-search hidden-xs hidden-sm" aria-hidden="true"></i> Buscar Viaje</a></li>
+  <li class="<%= 'active' if current_page?(new_trip_path) %>"><a href="<%= new_trip_path %>"><i class="fa fa-suitcase hidden-xs hidden-sm" aria-hidden="true"></i> Nuevo viaje</a></li>
+</ul>

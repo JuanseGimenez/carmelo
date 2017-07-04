@@ -1,0 +1,31 @@
+<div style="padding-top: 50px;  text-align: center;">
+  <div class="col-lg-12">
+    <div class="row" id="trips_car_title">
+      <div class="col-lg-6 hidden-sm hidden-xs hidden-md" style="padding: 10px">Conductor</div>
+      <div class="col-lg-3 hidden-sm hidden-xs hidden-md" style="padding: 10px">Origen → Destino</div>
+      <div class="col-lg-3 hidden-sm hidden-xs hidden-md" style="padding: 10px">Fecha</div>
+      <div class="col-sm-12 hidden-lg" style="padding: 10px">Datos de los viaje</div>
+    </div>
+  </div>
+  <div class="trips_car">
+    <% @return_segments.each do |segment| %>
+      <div class="row">
+        <div class="col-lg-2">
+          <image class="image-profile" alt="Foto de perfil" src="<%= segment.trip.owner.facebook_image_url %>?type=normal" height="70" width="70"></image>
+        </div>
+        <div class="col-lg-4">
+          <h4><a target="_blank" href="https://facebook.com/<%= segment.trip.owner.uid %>"><%= segment.trip.owner.name %></a></h4>
+          <p>@<%= segment.trip.owner.location.downcase %></p>
+        </div>
+        <div class="col-lg-3">
+          <b id="trip-route">
+            <i id="origin" class="fa fa-map-marker"></i> <%= segment.origin %><br>
+            <i id="destination" class="fa fa-map-marker"></i> <%= segment.destination %>
+          </b>
+        </div>
+        <div class="col-lg-3"><h4><%= I18n.localize segment.start_date, :format => :short %></h4></div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag 'dashboards' %>
+<%= stylesheet_link_tag 'register' %>
+<% end %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" style="padding-top: 150px;">
+  <div class="row">
+    <div class="title-edit">
+      <h3>Editando Perfil</h3>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="<%= current_user.facebook_image_url%>?type=large" class="avatar img-circle img-thumbnail img-responsive" alt="avatar">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <%= form_for(@user, url: user_registration_path(@user), html: {class: "form"}) do |f| %>
+      <div class="row" id="form">
+        <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre y Apellido", required: "true" %>
+        <%= f.text_field :email , class: "form-control input-lg", placeholder: "Correo electronico", required: "true"%>
+        <%= f.text_field :phone_number, class: "form-control input-lg" , placeholder: "Numero Telefonico", required: "true"%>
+        <%= f.text_field :location, id: "location", class: "form-control input-lg", placeholder: "Ciudad de Residencia", required: "true" %>
+        <%= f.password_field :password , class: "form-control input-lg", placeholder: "Contraseña", required: "true"%>
+        <%= f.password_field :password_confirmation , class: "form-control input-lg", placeholder: "Confirmacion de Contraseña", required: "true"%>
+        <%= f.text_field :birthdate, class: "form-control input-lg" , placeholder: "Fecha de Nacimiento" %>
+      </div>
+      <div class="form-group" data-toggle="buttons">
+        <label class="btn btn-default btn-lg">
+          <%= f.radio_button(:gender, "mujer")%> Mujer
+          <%= f.label(:gender_mujer, "mujer") do %>
+          <i class="fa fa-female" aria-hidden="true"></i>
+          <%  end %>
+        </label>
+        <label class="btn btn-default btn-lg">
+          <%= f.radio_button(:gender, "hombre")%> Hombre
+          <%= f.label(:gender_hombre, "hombre") do %>
+          <i class="fa fa-male" aria-hidden="true"></i>
+          <%  end %>
+        </label>
+      </div>
+      <button id="deactivate-button" type="button" class="btn deactivate-btn btn-lg btn-block btn-danger" data-toggle="modal" data-target="#confirm-deactivation-modal">Desactivar cuenta</button>
+      <%= f.submit "Aceptar y Continuar", class: "btn btn-lg btn-primary btn-block signup-btn" %>
+      <span class="help-block"><b>Al hacer click en Aceptar y Continuar aceptas nuestros <a href="">Terminos y Condiciones</a>.</b></span>
+      <br/>
+      <%  end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirm-deactivation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" style="text-align: center;" >¿Deseas desactivar tu cuenta?</h3>
+      </div>
+      <div class="modal-body">
+        <div class="">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="media">
+                <div class="media-left">
+                  <img class="media-object"">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"></h4>
+                  Al hacerlo no podras utilizar la aplicación ni navegar por ella, la proxima vez que te logees podras reactivarla, ¿Deseas continuar?
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-deactivation" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <%= button_to "Desactivar", deactivate_user_path, :id => "confirm-deactivation", :class => "btn btn-danger btn-ok", :method => :post %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#deactivate-button').change(function(event){
+      if(!$(this).prop('checked')){
+        $('#confirm-deactivation-modal').modal('show');
+        evt.stopPropagation();
+      }
+    });
+    $('#cancel-deactivation').on('click', function(evt) {
+      $('#confirm-deactivation-modal').modal('hide');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      evt.stopPropagation();
+    });
+    $('#confirm-deactivation').on('click', function(evt) {
+      $('#confirm-deactivation-modal').modal('hide');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      evt.stopPropagation();
+    });
+    $('#user_birthdate').datetimepicker({
+      viewMode: 'years',
+      format: 'DD/MM/YYYY',
+      locale: 'es'
+    });
+  });
+
+  $('#user_birthdate input').click(function(event){
+    $('#user_birthdate ').data("DateTimePicker").show();
+  });
+</script>

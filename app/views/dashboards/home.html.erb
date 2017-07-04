@@ -1,0 +1,6 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+<% end %>
+<% content_for :title, "Home" %>
+<%= render partial: "dashboards/header/navbar" %>
+<%= render partial: "dashboards/container" %>

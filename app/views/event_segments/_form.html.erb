@@ -1,0 +1,27 @@
+<div class="row">
+  <%= bootstrap_form_for([@trip, @trip.event_segments.build])  do |f| %>
+    <%= f.text_field :name, class: "input-lg", label: "Nombre del segmento" %>
+    <%= f.text_area :description, class: "input-lg", label: "Descripcion corta" %>
+    <%= f.text_field :start_date, data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, class: "input-lg", label: "Fecha de inicio" %>
+    <%= f.text_field :end_date , data: { date_format: 'YYYY/MM/DD hh:mm A' }, required: true, class: "input-lg", label: "Fecha de finalizacion"%>
+    <%= f.submit "Guardar Segmento", class: "btn btn-lg btn-info btn-block col-lg-12"%>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(function () {
+      $('#event_segment_start_date').datetimepicker({
+      });
+  });
+
+  $('#event_segment_start_date').click(function(event){
+     $('#event_segment_start_date').data("DateTimePicker").show();
+  });
+  $(function () {
+      $('#event_segment_end_date').datetimepicker({
+      });
+  });
+
+  $('#event_segment_end_date input').click(function(event){
+     $('#event_segment_end_date ').data("DateTimePicker").show();
+  });
+</script>

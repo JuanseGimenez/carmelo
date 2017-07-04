@@ -1,0 +1,17 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'trips' %>
+  <%= stylesheet_link_tag 'cars' %>
+<% end %>
+<% content_for :title, "Editando #{@car.name} #{@car.model}" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container-fluid" id="trips-pages">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= render partial: "shared/flash_messages", flash: flash %>
+      <%= render partial: "dashboards/columns/column-left" %>
+      <%= render partial: "form"%>
+      <%= render partial: "dashboards/columns/column-right"%>
+    </div>
+  </div>
+</div>

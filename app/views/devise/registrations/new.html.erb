@@ -1,0 +1,68 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag 'dashboards' %>
+<%= stylesheet_link_tag 'register' %>
+<% end %>
+<div class="container" style="padding-top: 150px;">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-2">
+    </div>
+    <div class="col-sm-6">
+      <%= form_for(@user, url: user_registration_path(@user), html: {class: "form"}) do |f| %>
+      <div class="row" id="form">
+        <%= image_tag("logo-black.png", size: "600x250", class: "logo-responsive") %>
+        <%= f.text_field :name, class: "form-control input-lg", placeholder: "Nombre y Apellido", required: "true" %>
+        <%= f.text_field :email , class: "form-control input-lg", placeholder: "Correo electronico", required: "true"%>
+        <%= f.text_field :phone_number, class: "form-control input-lg" , placeholder: "Numero Telefonico", required: "true"%>
+        <%= f.text_field :location, id: "location", class: "form-control input-lg", placeholder: "Ciudad de Residencia", required: "true" %>
+        <%= f.password_field :password , class: "form-control input-lg", placeholder: "Contraseña", required: "true"%>
+        <%= f.password_field :password_confirmation , class: "form-control input-lg", placeholder: "Confirmacion de Contraseña", required: "true"%>
+        <%= f.text_field :birthdate, class: "form-control input-lg" , placeholder: "Fecha de Nacimiento" %>
+      </div>
+      <script type="text/javascript">
+        $(function () {
+          $('#user_birthdate').datetimepicker({
+            viewMode: 'years',
+            format: 'DD/MM/YYYY',
+            locale: 'es'
+          });
+        });
+
+        $('#user_birthdate input').click(function(event){
+          $('#user_birthdate ').data("DateTimePicker").show();
+        });
+      </script>
+      <div class="form-group" data-toggle="buttons">
+        <label class="btn btn-default btn-lg">
+          <%= f.radio_button(:gender, "mujer")%> Mujer
+          <%= f.label(:gender_mujer, "mujer") do %>
+          <i class="fa fa-female" aria-hidden="true"></i>
+          <%  end %>
+        </label>
+        <label class="btn btn-default btn-lg">
+          <%= f.radio_button(:gender, "hombre")%> Hombre
+          <%= f.label(:gender_hombre, "hombre") do %>
+          <i class="fa fa-male" aria-hidden="true"></i>
+          <%  end %>
+        </label>
+      </div>
+      <span class="help-block"><b>Al hacer click en Aceptar y Continuar aceptas nuestros <a href="">Terminos y Condiciones</a>.</b></span>
+      <%= f.submit "Aceptar y Continuar", class: "btn btn-lg btn-primary btn-block signup-btn" %><br />
+      <%  end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Es7o2Gtlqi9Vi2JMXuae75q2jp5ecXk&libraries=places"></script>
+<script type="text/javascript">
+  function initialize() {
+    var options = {
+      types: ['(cities)'],
+      componentRestrictions: {country: 'ar'}
+    };
+    var location = document.getElementById('location');
+    var autocomplete_location = new google.maps.places.Autocomplete(location, options);
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/es.js"></script>

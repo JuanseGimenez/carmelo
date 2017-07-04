@@ -1,0 +1,3 @@
+<%= form_for(current_user.active_relationships.find_by(trip_id: trip_id), html: {method: :delete}) do |f| %>
+  <%= f.submit "Cancelar suscripcion", class: "btn btn-warning text-uppercase" %>
+<% end %>

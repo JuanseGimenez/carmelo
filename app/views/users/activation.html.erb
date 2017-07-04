@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'dashboards' %>
+  <%= stylesheet_link_tag 'register' %>
+<% end %>
+<% content_for :title, "Re-Activación de perfil - #{current_user.name}" %>
+<%= render partial: "dashboards/header/navbar" %>
+<div class="container" style="padding-top: 150px;">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+    <%= image_tag("logo-black.png", size: "600x250", class: "logo-responsive center-block") %>
+        <div class="well">
+          <h3>Nos alegra que hayas vuelto!</h3>
+          <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h4>
+        </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+      <%= button_to "Re-Activar Cuenta", activate_user_path, :id => "confirm-activation", :class => "btn btn-md btn-primary", :method => :post %>
+      <%= button_to "No, no estoy listo", destroy_user_session_path, :class => "btn btn-md btn-danger ", :method => :delete %>
+    </div>
+  </div>
+</div>

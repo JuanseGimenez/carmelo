@@ -1,0 +1,11 @@
+<%= render partial: "dashboards/info-profile" %>
+<div id="carmelo-col-1-2">
+  <h4 class="text-muted">Tus viajes</h4>
+  <ul class="nav nav-pills nav-stacked">
+  <% @trips.each do |trip| %>
+    <li >
+      <a href="<%= trip_path(trip) %>"> <%= trip.name %> <span class="badge"><%= trip.posts.count %></span></a>
+    </li>
+  <% end %>
+  </ul>
+</div>
